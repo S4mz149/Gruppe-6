@@ -1,25 +1,25 @@
-const reveals = document.querySelectorAll(".reveal");
-const hero = document.querySelector(".hero");
+const track = document.querySelector('.carousel-track');
+let isDown = false, startX, scrollLeft;
 
-// Scroll reveal
-function revealOnScroll() {
-  const windowHeight = window.innerHeight;
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if(top < windowHeight - 120) el.classList.add("active");
-  });
-}
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
+track.addEventListener('mousedown', e => {
+  isDown = true;
+  startX = e.pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
+});
+track.addEventListener('mouseleave', () => isDown = false);
+track.addEventListener('mouseup', () => isDown = false);
+track.addEventListener('mousemove', e => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  const walk = (x - startX) * 1; // vitesse
+  track.scrollLeft = scrollLeft - walk;
+});
 
-// Hero blur + parallaxe
-window.addEventListener("scroll", () => {
-  const scroll = window.scrollY;
-  if(scroll > 50) {
-    hero.classList.add("blur");
-    hero.style.transform = `translateY(${scroll*0.2}px)`; // parallaxe léger
-  } else {
-    hero.classList.remove("blur");
-    hero.style.transform = `translateY(0px)`;
-  }
+// touch pour mobile
+track.addEventListener('touchstart', e => { startX = e.touches[0].pageX; scrollLeft = track.scrollLeft; });
+track.addEventListener('touchmove', e => {
+  const x = e.touches[0].pageX;
+  const walk = (x - startX) * 1;
+  track.scrollLeft = scrollLeft - walk;
 });
