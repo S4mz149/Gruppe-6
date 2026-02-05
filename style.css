@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #0f1115;
+    color: #ffffff;
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.9);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #f5c542;
+}
+
+/* HEADER */
+header {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url("https://images.unsplash.com/photo-1603570417045-46a6b7caa2a6") center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-size: 4rem;
+    color: #f5c542;
+}
+
+header p {
+    max-width: 700px;
+    margin: 20px 0;
+}
+
+.discord-btn {
+    background-color: #5865F2;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+section h2 {
+    color: #f5c542;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+/* SERVICES */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: #1a1d24;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin: 15px 0;
+    color: #f5c542;
+}
+
+/* CTA */
+.cta {
+    background: url("https://images.unsplash.com/photo-1521791136064-7986c2920216") center/cover;
+}
+
+.cta button {
+    margin-top: 25px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f5c542;
+}
+
+/* FOOTER */
+footer {
+    background-color: #000;
+    padding: 25px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* ANIMATION */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
