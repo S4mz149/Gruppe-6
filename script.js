@@ -1,18 +1,18 @@
-// Fade-in sections
+// Sections fade-in animation
 const sections = document.querySelectorAll("section");
 
-sections.forEach(section => {
-    section.style.opacity = 0;
-    section.style.transform = "translateY(20px)";
-    section.style.transition = "all 0.8s ease";
+sections.forEach(sec => {
+    sec.style.opacity = 0;
+    sec.style.transform = "translateY(20px)";
+    sec.style.transition = "all 0.7s ease";
 });
 
 window.addEventListener("scroll", () => {
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            section.style.opacity = 1;
-            section.style.transform = "translateY(0)";
+    sections.forEach(sec => {
+        const pos = sec.getBoundingClientRect().top;
+        if (pos < window.innerHeight - 80) {
+            sec.style.opacity = 1;
+            sec.style.transform = "translateY(0)";
         }
     });
 });
