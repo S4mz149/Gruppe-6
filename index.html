@@ -1,54 +1,170 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gruppe 6</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe 6 | FiveM Security</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --neon-green: #00ff66;
+            --pure-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--pure-white);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .logo { 
+            font-weight: 900; 
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            color: var(--neon-green);
+        }
+
+        .nav-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--neon-green); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, #00331a 0%, #050505 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 15vw, 10rem);
+            margin: 0;
+            font-weight: 900;
+            line-height: 0.8;
+            z-index: 2;
+            text-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--neon-green);
+            margin-top: 20px;
+            z-index: 2;
+        }
+
+        .g6-image {
+            position: absolute;
+            width: 60%;
+            max-width: 800px;
+            opacity: 0.6;
+            filter: grayscale(1) brightness(0.8) drop-shadow(0 0 50px var(--neon-green));
+            z-index: 1;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        /* Section Infos */
+        .content-section {
+            padding: 150px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            padding: 40px;
+            border-left: 4px solid var(--neon-green);
+            border-radius: 4px;
+        }
+
+        h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        span.highlight { color: var(--neon-green); }
+
+        .btn-join {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: var(--neon-green);
+            color: black;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 2px;
+            transition: 0.3s ease;
+        }
+
+        .btn-join:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 102, 0.4);
+        }
+    </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <video autoplay muted loop id="hero-video">
-    <source src="hero-video.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la vidéo.
-  </video>
-  <div class="overlay"></div>
-  <div class="hero-card card">
-    <h1>Organisation Premium</h1>
-    <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre Discord</a>
-  </div>
-</section>
+    <nav>
+        <div class="logo">GROUP 6</div>
+        <div class="nav-links">
+            <a href="#">Recrutement</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
 
-<!-- CARROUSEL STACK -->
-<section class="carousel">
-  <div class="carousel-track">
-    <!-- Présentation -->
-    <div class="card">
-      <h2>Présentation</h2>
-      <img src="mockup1.jpg" alt="Présentation">
-      <p>Découvrez notre organisation et notre philosophie.</p>
+    <div class="hero">
+        <p>Protection & Logistique</p>
+        <h1>GROUPE 6</h1>
+        <img src="https://gta-objects.com/images/vehicles/stockade.png" class="g6-image" alt="Convoy G6">
     </div>
-    <!-- Activités -->
-    <div class="card">
-      <h2>Nos activités</h2>
-      <img src="mockup2.jpg" alt="Activités">
-      <p>Transport sécurisé, protection et missions stratégiques.</p>
-    </div>
-    <!-- Alya -->
-    <div class="card">
-      <h2>Alya</h2>
-      <p>Rejoignez Alya pour plus d’informations</p>
-      <a href="https://discord.gg/alyarp" target="_blank" class="btn">Discord Alya</a>
-    </div>
-  </div>
-</section>
 
-<footer>
-  <p>© 2026 Gruppe 6</p>
-</footer>
+    <section class="content-section">
+        <div class="card">
+            <h2>Sécuriser <span class="highlight">Los Santos</span>.</h2>
+            <p>Le Groupe 6 est l'élite de la sécurité privée sur FiveM. Nous assurons le transport de fonds, la protection VIP et la surveillance des zones sensibles avec une rigueur militaire.</p>
+            <a href="#" class="btn-join">POSTULER MAINTENANT</a>
+        </div>
+        
+        <div>
+            <h3 style="color: var(--neon-green);">NOS MISSIONS</h3>
+            <ul style="list-style: none; padding: 0; line-height: 2.5;">
+                <li>🛡️ Protection rapprochée de haute importance</li>
+                <li>💰 Transport de valeurs hautement sécurisé</li>
+                <li>🚨 Intervention rapide sur alarme</li>
+                <li>📑 Audit de sécurité pour entreprises</li>
+            </ul>
+        </div>
+    </section>
 
-<script src="script.js"></script>
 </body>
 </html>
+
