@@ -1,14 +1,14 @@
-// Liste des événements à venir
-const events = [
-    'Webinaire d\'introduction : 10 mars 2026',
-    'Soirée de lancement : 20 mars 2026',
-    'Championnat de jeu : 30 mars 2026'
-];
+const reveals = document.querySelectorAll(".reveal");
 
-const eventList = document.getElementById('event-list');
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    if (elementTop < windowHeight - 120) {
+      el.classList.add("active");
+    }
+  });
+}
 
-events.forEach(event => {
-    const listItem = document.createElement('li');
-    listItem.textContent = event;
-    eventList.appendChild(listItem);
-});
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
