@@ -1,13 +1,20 @@
+/* GENERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
     background-color: #0f1115;
     color: #ffffff;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: #f5c542;
 }
 
 /* NAVBAR */
@@ -15,7 +22,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.95);
     padding: 15px 0;
     z-index: 1000;
 }
@@ -31,8 +38,6 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
     font-weight: bold;
 }
 
@@ -44,7 +49,7 @@ nav ul li a:hover {
 header {
     height: 90vh;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url("https://images.unsplash.com/photo-1603570417045-46a6b7caa2a6") center/cover;
+    url('images/header.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,13 +66,13 @@ header h1 {
 header p {
     max-width: 700px;
     margin: 20px 0;
+    font-size: 1.2rem;
 }
 
 .discord-btn {
     background-color: #5865F2;
     color: white;
     padding: 15px 30px;
-    text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
 }
@@ -79,9 +84,9 @@ section {
 }
 
 section h2 {
-    color: #f5c542;
-    margin-bottom: 40px;
     font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #f5c542;
 }
 
 /* SERVICES */
@@ -102,44 +107,30 @@ section h2 {
     height: 180px;
     object-fit: cover;
     border-radius: 8px;
+    margin-bottom: 15px;
 }
 
 .card h3 {
-    margin: 15px 0;
-    color: #f5c542;
+    margin-bottom: 10px;
 }
 
-/* CTA */
-.cta {
-    background: url("https://images.unsplash.com/photo-1521791136064-7986c2920216") center/cover;
+/* GALERIE */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
 }
 
-.cta button {
-    margin-top: 25px;
-    padding: 15px 40px;
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #f5c542;
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
 }
 
 /* FOOTER */
 footer {
     background-color: #000;
     padding: 25px;
+    text-align: center;
     font-size: 0.9rem;
     color: #aaa;
-}
-
-/* ANIMATION */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
 }

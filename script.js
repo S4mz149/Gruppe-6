@@ -1,14 +1,19 @@
-function openDiscord() {
-    window.open("https://discord.gg/CSCppSPYWS", "_blank");
-}
+// Smooth fade-in des sections
+const fadeElements = document.querySelectorAll('section');
 
-const faders = document.querySelectorAll(".fade-in");
-
-window.addEventListener("scroll", () => {
-    faders.forEach(element => {
-        const position = element.getBoundingClientRect().top;
-        if (position < window.innerHeight - 100) {
-            element.classList.add("visible");
+window.addEventListener('scroll', () => {
+    fadeElements.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+            section.style.opacity = 1;
+            section.style.transform = 'translateY(0)';
         }
     });
+});
+
+// Initial invisible state
+fadeElements.forEach(section => {
+    section.style.opacity = 0;
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'all 0.8s ease';
 });
