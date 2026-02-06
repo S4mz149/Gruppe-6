@@ -3,167 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groupe 6 | FiveM Security</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>GROUPE 6 | Sécurité d'Élite FiveM RP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --bg-dark: #050505;
             --neon-green: #00ff66;
             --pure-white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.05);
+            --card-bg: rgba(10, 10, 10, 0.8);
+            --border-glow: 0 0 15px var(--neon-green), 0 0 5px var(--neon-green);
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--pure-white);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Exo 2', sans-serif;
             margin: 0;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            padding: 25px 50px;
+            overflow: hidden; /* Cache le défilement initial pour les cartes */
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            position: fixed;
+            justify-content: center;
+            min-height: 100vh;
+            perspective: 1000px; /* Pour un effet 3D subtil */
+        }
+
+        /* Conteneur principal des cartes */
+        .card-container {
+            display: flex;
             width: 100%;
-            box-sizing: border-box;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            height: 100vh;
+            overflow: hidden; /* Géré par JS */
+            position: relative;
         }
 
-        .logo { 
-            font-weight: 900; 
-            font-size: 1.5rem;
-            letter-spacing: -1px;
-            color: var(--neon-green);
-        }
-
-        .nav-links a {
-            color: var(--pure-white);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--neon-green); }
-
-        /* Hero Section */
-        .hero {
+        /* Style des cartes individuelles */
+        .card {
+            min-width: 100vw; /* Chaque carte prend 100% de la largeur de la vue */
             height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;
+            background-color: var(--bg-dark); /* Fallback, les images couvriront */
             position: relative;
-            background: radial-gradient(circle at center, #00331a 0%, #050505 70%);
+            transform-origin: center center;
+            transition: transform 0.8s ease-out; /* Pour les animations de base */
         }
 
-        .hero h1 {
-            font-size: clamp(4rem, 15vw, 10rem);
-            margin: 0;
-            font-weight: 900;
-            line-height: 0.8;
-            z-index: 2;
-            text-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--neon-green);
-            margin-top: 20px;
-            z-index: 2;
-        }
-
-        .g6-image {
-            position: absolute;
-            width: 60%;
-            max-width: 800px;
-            opacity: 0.6;
-            filter: grayscale(1) brightness(0.8) drop-shadow(0 0 50px var(--neon-green));
-            z-index: 1;
-            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-        }
-
-        /* Section Infos */
-        .content-section {
-            padding: 150px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .card {
-            background: var(--glass-bg);
+        .card-content {
+            background-color: var(--card-bg);
+            border: 2px solid var(--neon-green);
+            box-shadow: var(--border-glow);
             padding: 40px;
-            border-left: 4px solid var(--neon-green);
-            border-radius: 4px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+            animation: fadeIn 1.5s ease-out; /* Animation d'apparition du contenu */
         }
 
-        h2 { font-size: 2.5rem; margin-bottom: 20px; }
-        span.highlight { color: var(--neon-green); }
+        /* Titres et textes */
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-green);
+            text-shadow: var(--border-glow);
+        }
 
-        .btn-join {
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 20px; line-height: 1.1; }
+        h2 { font-size: clamp(1.8rem, 6vw, 3rem); margin-top: 40px; }
+        p { font-size: clamp(0.9rem, 2vw, 1.2rem); line-height: 1.6; color: var(--pure-white); }
+
+        /* Liens et boutons */
+        .btn {
             display: inline-block;
             margin-top: 30px;
-            padding: 15px 40px;
-            background: var(--neon-green);
-            color: black;
+            padding: 15px 30px;
+            background-color: var(--neon-green);
+            color: var(--bg-dark);
             text-decoration: none;
             font-weight: 700;
-            border-radius: 2px;
-            transition: 0.3s ease;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .btn-join:hover {
+        .btn:hover {
+            background-color: var(--pure-white);
+            color: var(--neon-green);
+            box-shadow: var(--border-glow);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 255, 102, 0.4);
+        }
+
+        .social-link {
+            font-size: 2rem;
+            color: var(--pure-white);
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--neon-green);
+        }
+
+        /* Arrière-plans des cartes (images) */
+        .card-1 {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1541888946743-a6152a233543?auto=format&fit=crop&q=80&w=1920&h=1080') no-repeat center center/cover;
+        }
+        .card-2 {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1533750014072-0402b8969408?auto=format&fit=crop&q=80&w=1920&h=1080') no-repeat center center/cover;
+        }
+        .card-3 {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601726002167-f051493666d9?auto=format&fit=crop&q=80&w=1920&h=1080') no-repeat center center/cover;
+        }
+        .card-4 {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1596708761273-df267e71f98d?auto=format&fit=crop&q=80&w=1920&h=1080') no-repeat center center/cover;
+        }
+
+        /* Animation de base pour le contenu */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Indicateurs de navigation (points) */
+        .nav-dots {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 1000;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+            transform: scale(1.2);
+        }
+
+        /* Flèches de navigation */
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--pure-white);
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            color: var(--neon-green);
+            opacity: 1;
+        }
+
+        .arrow-left { left: 30px; }
+        .arrow-right { right: 30px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-content {
+                padding: 20px;
+                max-width: 90%;
+            }
+            h1 { font-size: clamp(2rem, 10vw, 4rem); }
+            h2 { font-size: clamp(1.5rem, 8vw, 2.5rem); }
+            .nav-arrow {
+                font-size: 2rem;
+            }
+            .nav-dots { bottom: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">GROUP 6</div>
-        <div class="nav-links">
-            <a href="#">Recrutement</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+    <div class="card-container">
+        <div class="card card-1" data-card="0">
+            <div class="card-content">
+                <h1><span style="color:var(--pure-white);">GROUPE</span> 6</h1>
+                <p>Organisation de Sécurité d'Élite sur FiveM RP. Protection, Logistique et Interventions Spécialisées.</p>
+                <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre notre Discord</a>
+                <div style="margin-top: 30px;">
+                    <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+            </div>
         </div>
-    </nav>
 
-    <div class="hero">
-        <p>Protection & Logistique</p>
-        <h1>GROUPE 6</h1>
-        <img src="https://gta-objects.com/images/vehicles/stockade.png" class="g6-image" alt="Convoy G6">
+        <div class="card card-2" data-card="1">
+            <div class="card-content">
+                <h2>Nos <span style="color:var(--pure-white);">Missions</span></h2>
+                <p>En tant que Groupe 6, notre expertise s'étend de la protection rapprochée aux convois blindés, en passant par la surveillance stratégique. Nous opérons dans l'ombre pour garantir la sécurité de nos clients et la stabilité de Los Santos.</p>
+                <ul style="list-style: none; padding: 0; margin-top: 30px; font-size: 1.1rem;">
+                    <li><i class="fas fa-shield-alt" style="color:var(--neon-green);"></i> Protection VIP & Personnalités</li>
+                    <li><i class="fas fa-truck-moving" style="color:var(--neon-green);"></i> Convois blindés et transferts de fonds</li>
+                    <li><i class="fas fa-binoculars" style="color:var(--neon-green);"></i> Surveillance et Renseignement</li>
+                    <li><i class="fas fa-wrench" style="color:var(--neon-green);"></i> Services de sécurité personnalisés</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card card-3" data-card="2">
+            <div class="card-content">
+                <h2>Rejoignez <span style="color:var(--pure-white);">l'Élite</span></h2>
+                <p>Le Groupe 6 recrute des agents motivés, disciplinés et prêts à relever les défis les plus ardus. Si vous avez la rigueur, l'esprit d'équipe et le sens du devoir, votre place est parmi nous.</p>
+                <a href="#" class="btn">POSTULER MAINTENANT</a>
+                <p style="font-size: 0.9rem; margin-top: 20px;">(Formulaire de candidature disponible sur notre Discord)</p>
+            </div>
+        </div>
+
+        <div class="card card-4" data-card="3">
+            <div class="card-content">
+                <h2>Connectez-vous à <span style="color:var(--pure-white);">Los Santos</span></h2>
+                <p>Le Groupe 6 est fier de collaborer avec ALYA RP, l'un des serveurs Roleplay les plus dynamiques. Rejoignez l'action et vivez une expérience immersive !</p>
+                <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
+                <div style="margin-top: 30px;">
+                    <p style="font-size: 0.9rem;">Contactez-nous pour toute demande d'informations ou partenariats.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <section class="content-section">
-        <div class="card">
-            <h2>Sécuriser <span class="highlight">Los Santos</span>.</h2>
-            <p>Le Groupe 6 est l'élite de la sécurité privée sur FiveM. Nous assurons le transport de fonds, la protection VIP et la surveillance des zones sensibles avec une rigueur militaire.</p>
-            <a href="#" class="btn-join">POSTULER MAINTENANT</a>
-        </div>
-        
-        <div>
-            <h3 style="color: var(--neon-green);">NOS MISSIONS</h3>
-            <ul style="list-style: none; padding: 0; line-height: 2.5;">
-                <li>🛡️ Protection rapprochée de haute importance</li>
-                <li>💰 Transport de valeurs hautement sécurisé</li>
-                <li>🚨 Intervention rapide sur alarme</li>
-                <li>📑 Audit de sécurité pour entreprises</li>
-            </ul>
-        </div>
-    </section>
+    <div class="nav-arrow arrow-left"><i class="fas fa-chevron-left"></i></div>
+    <div class="nav-arrow arrow-right"><i class="fas fa-chevron-right"></i></div>
+
+    <div class="nav-dots">
+        <div class="dot active" data-dot="0"></div>
+        <div class="dot" data-dot="1"></div>
+        <div class="dot" data-dot="2"></div>
+        <div class="dot" data-dot="3"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script>
+        // --- JavaScript pour les animations de cartes ---
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        let activeCardIndex = 0;
+        const cards = gsap.utils.toArray('.card');
+        const cardContainer = document.querySelector('.card-container');
+        const dots = gsap.utils.toArray('.dot');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+
+        // Fonction pour mettre à jour les indicateurs de points
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeCardIndex);
+            });
+        }
+
+        // Fonction pour faire glisser les cartes
+        function goToCard(index) {
+            if (index < 0 || index >= cards.length) return;
+
+            activeCardIndex = index;
+            gsap.to(cardContainer, {
+                x: -activeCardIndex * window.innerWidth, // Déplace le conteneur des cartes
+                duration: 1.2,
+                ease: "expo.out",
+                onComplete: updateDots // Met à jour les points après l'animation
+            });
+        }
+
+        // Navigation avec les flèches
+        arrowRight.addEventListener('click', () => {
+            goToCard(activeCardIndex + 1);
+        });
+
+        arrowLeft.addEventListener('click', () => {
+            goToCard(activeCardIndex - 1);
+        });
+
+        // Navigation avec les points
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToCard(parseInt(dot.dataset.dot));
+            });
+        });
+
+        // Navigation au clavier (flèches gauche/droite)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                goToCard(activeCardIndex + 1);
+            } else if (e.key === 'ArrowLeft') {
+                goToCard(activeCardIndex - 1);
+            }
+        });
+
+        // Ajuster la position au redimensionnement de la fenêtre
+        window.addEventListener('resize', () => {
+            gsap.to(cardContainer, {
+                x: -activeCardIndex * window.innerWidth,
+                duration: 0
+            });
+        });
+
+        // Animation d'apparition initiale du contenu de la première carte
+        gsap.from(".card-1 .card-content", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: 0.5,
+            ease: "power2.out"
+        });
+
+    </script>
 
 </body>
 </html>
