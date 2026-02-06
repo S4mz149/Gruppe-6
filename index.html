@@ -5,84 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GROUPE 6 | Sécurité d'Élite</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<!-- CSS -->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card-container">
-    <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
-        <div class="card-content">
+<!-- VIDEO DE FOND UNIQUE -->
+<video id="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="background.mp4" type="video/mp4">
+</video>
+
+<!-- CONTENU -->
+<div class="overlay">
+
+    <div class="card-container">
+        <section class="card">
             <h1>GROUPE 6</h1>
-            <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
+            <p>Organisation de Sécurité d'Élite.<br>Protection, Logistique et Interventions Spécialisées.</p>
             <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
-        </div>
-    </div>
+        </section>
 
-    <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
-        <div class="card-content">
+        <section class="card">
             <h2>Nos Missions</h2>
-            <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
             <ul>
-                <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
-                <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
-                <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
+                <li><i class="fas fa-shield-alt"></i> Protection VIP</li>
+                <li><i class="fas fa-truck-moving"></i> Convois blindés</li>
+                <li><i class="fas fa-binoculars"></i> Surveillance</li>
             </ul>
-        </div>
-    </div>
+        </section>
 
-    <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
-        <div class="card-content">
-            <h2>Rejoignez l'Élite</h2>
-            <p>Le Groupe 6 recrute des agents motivés et disciplinés.</p>
+        <section class="card">
+            <h2>Rejoignez l’Élite</h2>
+            <p>Agents disciplinés et motivés recherchés.</p>
             <a href="#" class="btn">POSTULER</a>
-            <p class="small-text">(Formulaire sur Discord)</p>
-        </div>
-    </div>
+            <p class="small">(Formulaire sur Discord)</p>
+        </section>
 
-    <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
-        <div class="card-content">
+        <section class="card">
             <h2>Los Santos</h2>
-            <p>Présent sur ALYA RP, l’un des serveurs les plus dynamiques.</p>
+            <p>Présent sur ALYA RP.</p>
             <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
-        </div>
+        </section>
     </div>
+
+    <div class="nav">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <div class="skip" onclick="nextSlide()">SKIP <i class="fas fa-chevron-right"></i></div>
+
 </div>
 
-<div class="skip-btn" onclick="nextSlide()">
-    SKIP <i class="fas fa-chevron-right"></i>
-</div>
-
-<div class="nav-dots">
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-</div>
-
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-<!-- JS -->
 <script src="script.js"></script>
-
 </body>
 </html>
