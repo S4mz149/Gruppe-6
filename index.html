@@ -27,14 +27,16 @@ html, body {
 
 /* ================= VIDEO FOND ================= */
 .bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -3;
+    position: fixed;        /* Reste toujours derrière */
+    top: 0; 
+    left: 0;
+    width: 100vw;           /* Plein écran largeur */
+    height: 100vh;          /* Plein écran hauteur */
+    object-fit: cover;      /* Coupe les bords pour couvrir tout */
+    z-index: -1;            /* Derrière tout le contenu */
     filter: brightness(0.35);
-}
+    pointer-events: none;   /* Pour que les clics passent à travers */
+}}
 
 /* ================= SLIDER ================= */
 .card-container {
