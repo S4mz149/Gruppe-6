@@ -4,159 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GROUPE 6 | Sécurité d'Élite</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 :root {
     --neon-green: #00ff66;
-    --card-bg: rgba(0,0,0,0.55);
+    --pure-white: #ffffff;
+    --card-bg: rgba(0, 0, 0, 0.6);
+    --border-glow: 0 0 15px var(--neon-green);
 }
 
-/* ===== BASE ===== */
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
     overflow: hidden;
-    background: black;
+    background-color: black;
     font-family: 'Exo 2', sans-serif;
 }
 
-/* ===== VIDEO FOND ===== */
-.bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -10;
-    filter: brightness(0.4);
-}
-
-/* ===== SLIDER ===== */
 .card-container {
     display: flex;
-    width: 400vw;
+    width: 400vw; /* 4 cartes */
     height: 100vh;
+    position: relative;
+    z-index: 1;
+    transition: transform 1s ease-out;
 }
 
 .card {
     width: 100vw;
     height: 100vh;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* ===== CARTE ===== */
-.card-content {
-    width: 650px;
-    min-height: 380px;
-    padding: 30px;
-    border-radius: 12px;
-    border: 2px solid var(--neon-green);
-    box-shadow: 0 0 25px var(--neon-green);
-    color: white;
-    text-align: center;
-
-    /* IMAGE DANS LE CADRE */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    /* overlay sombre */
     position: relative;
     overflow: hidden;
 }
 
-.card-content::before {
-    content: "";
+.card video {
     position: absolute;
-    inset: 0;
-    background: var(--card-bg);
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: 0;
+    filter: brightness(0.4);
 }
 
-.card-content > * {
+.card-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    background-color: var(--card-bg);
+    border: 2px solid var(--neon-green);
+    box-shadow: var(--border-glow);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 650px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    color: var(--pure-white);
 }
 
-/* ===== IMAGES PAR CARTE ===== */
-.card-1 .card-content {
-    background-image: url("djb0b44-c4077bb5-d56f-4596-abcb-3ba7c2e1dc78.png");
-}
-
-.card-2 .card-content {
-    background-image: url("87d90-17510393768786-1920.jpg");
-}
-
-.card-3 .card-content {
-    background-image: url("bcbf7f-1.png");
-}
-
-.card-4 .card-content {
-    background-image: url("bcbf7f-6.png");
-}
-
-/* ===== TEXTES ===== */
 h1, h2 {
     font-family: 'Orbitron', sans-serif;
     color: var(--neon-green);
-    text-shadow: 0 0 15px var(--neon-green);
+    text-shadow: var(--border-glow);
 }
 
-h1 { font-size: 3.2rem; }
-h2 { font-size: 2.1rem; }
+h1 { font-size: 3.5rem; margin-bottom: 15px; }
+h2 { font-size: 2.2rem; margin-top: 0; }
+p { font-size: 1.1rem; line-height: 1.5; }
 
-p { line-height: 1.5; }
-
-ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    margin-top: 15px;
-}
-
-li { margin: 8px 0; }
-li i { color: var(--neon-green); margin-right: 8px; }
-
-/* ===== BOUTON ===== */
 .btn {
     display: inline-block;
     margin-top: 20px;
-    padding: 12px 28px;
-    background: var(--neon-green);
+    padding: 12px 25px;
+    background-color: var(--neon-green);
     color: black;
-    font-weight: bold;
-    border-radius: 6px;
     text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    text-transform: uppercase;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: white;
+    background-color: white;
     transform: scale(1.05);
 }
 
-/* ===== NAV ===== */
 .skip-btn {
     position: fixed;
     bottom: 30px;
     right: 40px;
     color: var(--neon-green);
-    font-family: 'Orbitron';
+    font-family: 'Orbitron', sans-serif;
     cursor: pointer;
     z-index: 100;
-    animation: pulse 2s infinite;
+    font-weight: bold;
+    font-size: 1.1rem;
+    animation: pulseSkip 2s infinite;
 }
 
-@keyframes pulse {
-    0% { opacity: .5; transform: translateX(0); }
+@keyframes pulseSkip {
+    0% { opacity: 0.5; transform: translateX(0); }
     50% { opacity: 1; transform: translateX(8px); }
-    100% { opacity: .5; transform: translateX(0); }
+    100% { opacity: 0.5; transform: translateX(0); }
 }
 
 .nav-dots {
@@ -169,66 +127,114 @@ li i { color: var(--neon-green); margin-right: 8px; }
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 10px; height: 10px;
     border-radius: 50%;
-    background: rgba(255,255,255,.3);
-    margin: 0 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 8px;
+    cursor: pointer;
 }
 
-.dot.active {
-    background: var(--neon-green);
-    box-shadow: 0 0 8px var(--neon-green);
+.dot.active { 
+    background-color: var(--neon-green); 
+    box-shadow: 0 0 8px var(--neon-green); 
 }
+
+ul { list-style: none; padding: 0; text-align: left; margin: 15px auto; }
+li { margin: 8px 0; font-size: 1rem; }
+li i { color: var(--neon-green); margin-right: 10px; }
 </style>
 </head>
-
 <body>
 
-<!-- VIDEO FOND -->
-<video class="bg-video" autoplay muted loop playsinline>
-    <source src="Screen_Recording_20260206_011212_YouTube.mp4" type="video/mp4">
-</video>
-
 <div class="card-container">
-
-    <div class="card card-1">
+    <div class="card">
+        <video autoplay muted loop playsinline>
+            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
+        </video>
         <div class="card-content">
             <h1>GROUPE 6</h1>
             <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
-            <a href="https://discord.gg/XJtWUFuTtT" class="btn">Rejoindre le Discord</a>
+            <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
         </div>
     </div>
 
-    <div class="card card-2">
+    <div class="card">
+        <video autoplay muted loop playsinline>
+            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
+        </video>
         <div class="card-content">
             <h2>Nos Missions</h2>
             <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
             <ul>
-                <li><i class="fas fa-shield-alt"></i> Protection VIP</li>
-                <li><i class="fas fa-truck-moving"></i> Convois blindés</li>
-                <li><i class="fas fa-binoculars"></i> Surveillance</li>
+                <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
+                <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
+                <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
             </ul>
         </div>
     </div>
 
-    <div class="card card-3">
+    <div class="card">
+        <video autoplay muted loop playsinline>
+            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
+        </video>
         <div class="card-content">
             <h2>Rejoignez l'Élite</h2>
-            <p>Le Groupe 6 recrute des agents motivés et disciplinés.</p>
+            <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
             <a href="#" class="btn">POSTULER</a>
+            <p style="font-size: 0.8rem; margin-top: 15px;">(Formulaire sur Discord)</p>
         </div>
     </div>
 
-    <div class="card card-4">
+    <div class="card">
+        <video autoplay muted loop playsinline>
+            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
+        </video>
         <div class="card-content">
             <h2>Los Santos</h2>
-            <p>Le Groupe 6 s'installe sur ALYA RP.</p>
-            <a href="https://discord.gg/alyarp" class="btn">REJOINDRE ALYA RP</a>
+            <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques. Rejoignez l'action !</p>
+            <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
         </div>
     </div>
-
 </div>
+
+<div class="skip-btn" onclick="nextSlide()">
+    SKIP <i class="fas fa-chevron-right"></i>
+</div>
+
+<div class="nav-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
+<script>
+const container = document.querySelector('.card-container');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+const totalSlides = document.querySelectorAll('.card').length;
+
+function slideTo(index) {
+    if (index >= totalSlides) index = 0;
+    currentIndex = index;
+    container.style.transform = `translateX(${-currentIndex * window.innerWidth}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+}
+
+function nextSlide() {
+    slideTo(currentIndex + 1);
+}
+
+// Dots click
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => slideTo(i));
+});
+
+// Resize
+window.addEventListener('resize', () => {
+    container.style.transform = `translateX(${-currentIndex * window.innerWidth}px)`;
+});
+</script>
 
 </body>
 </html>
