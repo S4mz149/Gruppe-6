@@ -10,7 +10,7 @@
 :root {
     --neon-green: #00ff66;
     --pure-white: #ffffff;
-    --card-bg: rgba(0, 0, 0, 0.6);
+    --card-bg: rgba(0, 0, 0, 0.8);
     --border-glow: 0 0 15px var(--neon-green);
 }
 
@@ -28,7 +28,6 @@ body, html {
     height: 100vh;
     position: relative;
     z-index: 1;
-    will-change: transform;
 }
 
 .card {
@@ -40,17 +39,15 @@ body, html {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
-.card video {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    filter: brightness(0.4);
-}
+/* Attribution des fonds d'écran avec vos images */
+.card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1000006834.jpg'); }
+.card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1000006835.png'); }
+.card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1000006842.png'); }
+.card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1000006836.png'); }
 
 .card-content {
     position: relative;
@@ -58,144 +55,137 @@ body, html {
     background-color: var(--card-bg);
     border: 2px solid var(--neon-green);
     box-shadow: var(--border-glow);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 35px;
+    border-radius: 15px;
     text-align: center;
-    width: 650px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    backdrop-filter: blur(10px);
+    width: 800px;
+    backdrop-filter: blur(15px);
     color: var(--pure-white);
 }
 
-h1, h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--neon-green);
-    text-shadow: var(--border-glow);
+/* Grille Missions (Carte 2) */
+.mission-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+.mission-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid var(--neon-green);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.mission-item img:hover { transform: scale(1.05); box-shadow: 0 0 10px var(--neon-green); }
+
+/* Recrutement (Carte 3) */
+.recrutement-flex {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    text-align: left;
+}
+.recrutement-img-main {
+    width: 45%;
+    border-radius: 10px;
+    border: 1px solid var(--neon-green);
 }
 
-h1 { font-size: 3.5rem; margin-bottom: 15px; }
-h2 { font-size: 2.2rem; margin-top: 0; }
-p { font-size: 1.1rem; line-height: 1.5; }
+/* Logo Alya (Carte 4) */
+.alya-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--neon-green));
+}
+
+h1, h2 { font-family: 'Orbitron', sans-serif; color: var(--neon-green); text-shadow: var(--border-glow); margin: 0 0 15px 0; }
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.2rem; }
 
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
+    padding: 12px 30px;
     background-color: var(--neon-green);
     color: black;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 900;
     border-radius: 5px;
     text-transform: uppercase;
     transition: 0.3s;
+    margin-top: 20px;
 }
+.btn:hover { background-color: white; transform: scale(1.05); }
 
-.btn:hover {
-    background-color: white;
-    transform: scale(1.05);
-}
+.nav-dots { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; z-index: 100; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.2); margin: 0 10px; cursor: pointer; }
+.dot.active { background-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
 
-.skip-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    color: var(--neon-green);
-    font-family: 'Orbitron';
-    cursor: pointer;
-    z-index: 100;
-    font-weight: bold;
-    animation: pulseSkip 2s infinite;
-}
-
-@keyframes pulseSkip {
-    0% { opacity: 0.5; transform: translateX(0); }
-    50% { opacity: 1; transform: translateX(8px); }
-    100% { opacity: 0.5; transform: translateX(0); }
-}
-
-.nav-dots {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    z-index: 100;
-}
-
-.dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 8px;
-    cursor: pointer;
-}
-
-.dot.active { background-color: var(--neon-green); box-shadow: 0 0 8px var(--neon-green); }
-
-ul { list-style: none; padding: 0; text-align: left; margin: 15px auto; }
-li { margin: 8px 0; font-size: 1rem; }
-li i { color: var(--neon-green); margin-right: 10px; }
+.skip-btn { position: fixed; bottom: 30px; right: 40px; color: var(--neon-green); font-family: 'Orbitron'; cursor: pointer; z-index: 100; font-weight: bold; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 </style>
 </head>
 <body>
 
 <div class="card-container">
     <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
         <div class="card-content">
             <h1>GROUPE 6</h1>
-            <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
-            <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
+            <p style="font-size: 1.2rem;">SÉCURITÉ CORPORATIVE & LOGISTIQUE TACTIQUE</p>
+            <p>L'élite de la protection rapprochée et du transport de fonds à Los Santos.</p>
+            <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Terminal</a>
         </div>
     </div>
 
     <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
         <div class="card-content">
-            <h2>Nos Missions</h2>
-            <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
-            <ul>
-                <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
-                <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
-                <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
-            </ul>
+            <h2>Nos Opérations</h2>
+            <div class="mission-grid">
+                <div class="mission-item">
+                    <img src="1000006834.jpg" alt="Transport">
+                    <p><i class="fas fa-truck-moving"></i> Transport de fonds</p>
+                </div>
+                <div class="mission-item">
+                    <img src="1000006836.png" alt="Protection">
+                    <p><i class="fas fa-user-shield"></i> Escorte VIP</p>
+                </div>
+                <div class="mission-item">
+                    <img src="1000006835.png" alt="Logistique">
+                    <p><i class="fas fa-warehouse"></i> Sécurité Site</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
         <div class="card-content">
-            <h2>Rejoignez l'Élite</h2>
-            <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
-            <a href="#" class="btn">POSTULER</a>
-            <p style="font-size: 0.8rem; margin-top: 15px;">(Formulaire sur Discord)</p>
+            <h2>Recrutement Ouvert</h2>
+            <div class="recrutement-flex">
+                <img src="1000006842.png" class="recrutement-img-main" alt="Critères">
+                <div class="recrutement-info">
+                    <p>Le Groupe 6 recherche des agents disciplinés. Consultez nos critères officiels ci-contre.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-money-bill-wave" style="color:var(--neon-green)"></i> Salaire min: 42.000$ / semaine</li>
+                        <li><i class="fas fa-id-card" style="color:var(--neon-green)"></i> 21 ans & Casier vierge requis</li>
+                    </ul>
+                    <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Postuler ici</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="card">
-        <video autoplay muted loop playsinline>
-            <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
-        </video>
         <div class="card-content">
-            <h2>Los Santos</h2>
-            <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques. Rejoignez l'action !</p>
-            <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
+            <img src="1770339836855.jpeg" class="alya-logo" alt="Alya Logo">
+            <h2>ALYA RP</h2>
+            <p>Retrouvez-nous en ville sur Alya RP. <br>L'expérience Roleplay la plus immersive pour le Groupe 6.</p>
+            <a href="https://discord.gg/alyarp" target="_blank" class="btn">Rejoindre Alya RP</a>
         </div>
     </div>
 </div>
 
-<div class="skip-btn" onclick="nextSlide()">
-    SKIP <i class="fas fa-chevron-right"></i>
-</div>
+<div class="skip-btn" onclick="nextSlide()">SUIVANT <i class="fas fa-chevron-right"></i></div>
 
 <div class="nav-dots">
     <div class="dot active"></div>
@@ -215,8 +205,8 @@ function slideTo(index) {
     currentIndex = index;
     gsap.to(container, {
         x: -currentIndex * window.innerWidth,
-        duration: 1,
-        ease: "power2.out"
+        duration: 0.8,
+        ease: "power2.inOut"
     });
     dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
 }
