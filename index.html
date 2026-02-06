@@ -7,61 +7,56 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- VIDEO DE FOND UNIQUE -->
-<video id="bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="background.mp4" type="video/mp4">
+<!-- 🎥 VIDEO FOND PLEIN ÉCRAN -->
+<video class="bg-video" autoplay muted loop playsinline>
+    <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
 </video>
 
-<!-- CONTENU -->
-<div class="overlay">
+<!-- 🃏 CARTES -->
+<div class="card-container">
 
-    <div class="card-container">
-        <section class="card">
+    <div class="card bg1">
+        <div class="card-content">
             <h1>GROUPE 6</h1>
-            <p>Organisation de Sécurité d'Élite.<br>Protection, Logistique et Interventions Spécialisées.</p>
+            <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
             <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
-        </section>
+        </div>
+    </div>
 
-        <section class="card">
+    <div class="card bg2">
+        <div class="card-content">
             <h2>Nos Missions</h2>
             <ul>
                 <li><i class="fas fa-shield-alt"></i> Protection VIP</li>
                 <li><i class="fas fa-truck-moving"></i> Convois blindés</li>
                 <li><i class="fas fa-binoculars"></i> Surveillance</li>
             </ul>
-        </section>
+        </div>
+    </div>
 
-        <section class="card">
-            <h2>Rejoignez l’Élite</h2>
-            <p>Agents disciplinés et motivés recherchés.</p>
+    <div class="card bg3">
+        <div class="card-content">
+            <h2>Rejoignez l'Élite</h2>
+            <p>Nous recrutons des agents disciplinés.</p>
             <a href="#" class="btn">POSTULER</a>
-            <p class="small">(Formulaire sur Discord)</p>
-        </section>
+            <p class="small-text">(via Discord)</p>
+        </div>
+    </div>
 
-        <section class="card">
+    <div class="card bg4">
+        <div class="card-content">
             <h2>Los Santos</h2>
-            <p>Présent sur ALYA RP.</p>
+            <p>Présent sur ALYA RP</p>
             <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
-        </section>
+        </div>
     </div>
-
-    <div class="nav">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <div class="skip" onclick="nextSlide()">SKIP <i class="fas fa-chevron-right"></i></div>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
+
