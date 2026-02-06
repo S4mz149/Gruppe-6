@@ -29,7 +29,7 @@
             right: 0; bottom: 0;
             min-width: 100%; min-height: 100%;
             z-index: -1;
-            filter: brightness(0.35); 
+            filter: brightness(0.3); 
             object-fit: cover;
             background-color: black;
         }
@@ -141,7 +141,7 @@
 <body>
 
     <video autoplay muted loop playsinline id="bg-video">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-technological-circuit-board-interface-4431-large.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-circuit-board-1621-large.mp4" type="video/mp4">
     </video>
 
     <div class="card-container">
@@ -215,10 +215,12 @@
             slideTo(currentIndex + 1);
         }
 
+        // Navigation par les points
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => slideTo(i));
         });
 
+        // Gestion du redimensionnement
         window.addEventListener('resize', () => {
             gsap.set(container, { x: -currentIndex * window.innerWidth });
         });
