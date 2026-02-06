@@ -6,47 +6,46 @@
 <title>GROUPE 6 | Sécurité d'Élite</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 :root {
     --neon-green: #00ff66;
-    --pure-white: #ffffff;
-    --card-bg: rgba(0, 0, 0, 0.6);
-    --border-glow: 0 0 15px var(--neon-green);
+    --card-bg: rgba(0,0,0,0.65);
 }
+
+/* ================= BASE ================= */
 
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: black;
     font-family: 'Exo 2', sans-serif;
+    background: black;
 }
 
-/* 🎥 VIDEO FOND DE PAGE */
-.background-video {
+/* ================= VIDEO FOND ================= */
+
+.bg-video {
     position: fixed;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
-    filter: brightness(0.4);
-    z-index: 0;
+    z-index: -3;
+    filter: brightness(0.35);
 }
 
-/* CONTENEUR */
+/* ================= SLIDER ================= */
+
 .card-container {
     display: flex;
     width: 400vw;
     height: 100vh;
-    position: relative;
-    z-index: 1;
-    will-change: transform;
 }
 
-/* CARTE */
 .card {
     width: 100vw;
     height: 100vh;
@@ -54,67 +53,96 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-/* IMAGES PAR CARTE (SANS DEFORMATION) */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
     background-position: center;
-    background-size: cover;
-    filter: brightness(0.45);
-    z-index: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.card.bg1::before {
-    background-image: url("djb0b44-c4077bb5-d56f-4596-abcb-3ba7c2e1dc78.png");
-}
-.card.bg2::before {
-    background-image: url("87d90-17510393768786-1920.jpg");
-}
-.card.bg3::before {
-    background-image: url("bcbf7f-1.png");
-}
-.card.bg4::before {
-    background-image: url("bcbf7f-6.png");
+/* ================= IMAGES DES CARTES ================= */
+
+.card-1 {
+    background-image: url("image1.png");
 }
 
-/* CONTENU */
+.card-2 {
+    background-image: url("image2.png");
+}
+
+.card-3 {
+    background-image: url("image3.png");
+}
+
+.card-4 {
+    background-image: url("image4.png");
+}
+
+/* ================= CONTENU ================= */
+
 .card-content {
     position: relative;
     z-index: 2;
-    background-color: var(--card-bg);
+    background: var(--card-bg);
     border: 2px solid var(--neon-green);
-    box-shadow: var(--border-glow);
+    box-shadow: 0 0 20px var(--neon-green);
     padding: 30px;
     border-radius: 10px;
-    width: 650px;
-    min-height: 400px;
     text-align: center;
+    width: 650px;
+    min-height: 380px;
     backdrop-filter: blur(10px);
-    color: var(--pure-white);
+    color: white;
 }
 
 h1, h2 {
     font-family: 'Orbitron', sans-serif;
     color: var(--neon-green);
-    text-shadow: var(--border-glow);
+    text-shadow: 0 0 15px var(--neon-green);
 }
 
-h1 { font-size: 3.5rem; }
-h2 { font-size: 2.2rem; }
+h1 {
+    font-size: 3.2rem;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.1rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+/* ================= LISTES ================= */
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    text-align: left;
+}
+
+li {
+    margin: 10px 0;
+}
+
+li i {
+    color: var(--neon-green);
+    margin-right: 10px;
+}
+
+/* ================= BOUTONS ================= */
 
 .btn {
+    display: inline-block;
     margin-top: 20px;
-    padding: 12px 25px;
-    background-color: var(--neon-green);
+    padding: 12px 26px;
+    background: var(--neon-green);
     color: black;
+    text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    text-decoration: none;
     transition: 0.3s;
 }
 
@@ -123,26 +151,26 @@ h2 { font-size: 2.2rem; }
     transform: scale(1.05);
 }
 
-/* SKIP */
+/* ================= NAVIGATION ================= */
+
 .skip-btn {
     position: fixed;
     bottom: 30px;
     right: 40px;
     color: var(--neon-green);
     font-family: 'Orbitron';
-    font-weight: bold;
     cursor: pointer;
+    font-weight: bold;
+    animation: pulse 2s infinite;
     z-index: 100;
-    animation: pulseSkip 2s infinite;
 }
 
-@keyframes pulseSkip {
+@keyframes pulse {
     0% { opacity: 0.5; transform: translateX(0); }
     50% { opacity: 1; transform: translateX(8px); }
     100% { opacity: 0.5; transform: translateX(0); }
 }
 
-/* DOTS */
 .nav-dots {
     position: fixed;
     bottom: 30px;
@@ -155,9 +183,9 @@ h2 { font-size: 2.2rem; }
 .dot {
     width: 10px;
     height: 10px;
-    background: rgba(255,255,255,0.2);
     border-radius: 50%;
-    margin: 0 8px;
+    background: rgba(255,255,255,0.3);
+    margin: 0 6px;
     cursor: pointer;
 }
 
@@ -165,23 +193,20 @@ h2 { font-size: 2.2rem; }
     background: var(--neon-green);
     box-shadow: 0 0 8px var(--neon-green);
 }
-
-ul { list-style: none; padding: 0; }
-li i { color: var(--neon-green); margin-right: 10px; }
 </style>
 </head>
 
 <body>
 
-<!-- 🎥 VIDEO UNIQUE -->
-<video class="background-video" autoplay muted loop playsinline>
-    <source src="Screen_Recording_20260206_011212_YouTube.mp4" type="video/mp4">
+<!-- VIDEO FOND -->
+<video class="bg-video" autoplay muted loop playsinline>
+    <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
 </video>
 
-<!-- 🃏 CARTES -->
 <div class="card-container">
 
-    <div class="card bg1">
+    <!-- CARTE 1 -->
+    <div class="card card-1">
         <div class="card-content">
             <h1>GROUPE 6</h1>
             <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
@@ -189,27 +214,34 @@ li i { color: var(--neon-green); margin-right: 10px; }
         </div>
     </div>
 
-    <div class="card bg2">
+    <!-- CARTE 2 -->
+    <div class="card card-2">
         <div class="card-content">
             <h2>Nos Missions</h2>
+            <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
             <ul>
-                <li><i class="fas fa-shield-alt"></i> Protection VIP</li>
-                <li><i class="fas fa-truck-moving"></i> Convois blindés</li>
-                <li><i class="fas fa-binoculars"></i> Surveillance</li>
+                <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
+                <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
+                <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
             </ul>
         </div>
     </div>
 
-    <div class="card bg3">
+    <!-- CARTE 3 -->
+    <div class="card card-3">
         <div class="card-content">
             <h2>Rejoignez l'Élite</h2>
+            <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
             <a href="#" class="btn">POSTULER</a>
+            <p style="font-size: 0.8rem; margin-top: 10px;">(Formulaire sur Discord)</p>
         </div>
     </div>
 
-    <div class="card bg4">
+    <!-- CARTE 4 -->
+    <div class="card card-4">
         <div class="card-content">
             <h2>Los Santos</h2>
+            <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques.</p>
             <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
         </div>
     </div>
@@ -229,25 +261,28 @@ li i { color: var(--neon-green); margin-right: 10px; }
 <script>
 const container = document.querySelector('.card-container');
 const dots = document.querySelectorAll('.dot');
-let currentIndex = 0;
+let index = 0;
 
-function slideTo(index) {
-    if (index >= 4) index = 0;
-    currentIndex = index;
+function slideTo(i) {
+    index = i % 4;
     gsap.to(container, {
-        x: -currentIndex * window.innerWidth,
+        x: -index * window.innerWidth,
         duration: 1,
         ease: "power2.out"
     });
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    dots.forEach((d, n) => d.classList.toggle('active', n === index));
 }
 
-function nextSlide() { slideTo(currentIndex + 1); }
+function nextSlide() {
+    slideTo(index + 1);
+}
 
-dots.forEach((dot, i) => dot.addEventListener('click', () => slideTo(i)));
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => slideTo(i));
+});
 
 window.addEventListener('resize', () => {
-    gsap.set(container, { x: -currentIndex * window.innerWidth });
+    gsap.set(container, { x: -index * window.innerWidth });
 });
 </script>
 
