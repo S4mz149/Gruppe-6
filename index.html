@@ -14,8 +14,6 @@
     --card-bg: rgba(0,0,0,0.65);
 }
 
-/* ================= BASE ================= */
-
 html, body {
     margin: 0;
     padding: 0;
@@ -26,20 +24,18 @@ html, body {
     background: black;
 }
 
-/* ================= VIDEO FOND ================= */
-
+/* ===== VIDEO FOND ===== */
 .bg-video {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     z-index: -3;
-    filter: brightness(0.35);
+    filter: brightness(0.4);
 }
 
-/* ================= SLIDER ================= */
-
+/* ===== SLIDER ===== */
 .card-container {
     display: flex;
     width: 400vw;
@@ -53,42 +49,36 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-/* ================= IMAGES DES CARTES ================= */
-
-.card-1 {
-    background-image: url("image1.png");
-}
-
-.card-2 {
-    background-image: url("image2.png");
-}
-
-.card-3 {
-    background-image: url("image3.png");
-}
-
-.card-4 {
-    background-image: url("image4.png");
-}
-
-/* ================= CONTENU ================= */
-
-.card-content {
     position: relative;
-    z-index: 2;
+}
+
+/* ===== IMAGE DANS CHAQUE CARTE ===== */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.card-1::before { background-image: url("djb0b44-c4077bb5-d56f-4596-abcb-3ba7c2e1dc78.png"); }
+.card-2::before { background-image: url("87d90-17510393768786-1920.jpg"); }
+.card-3::before { background-image: url("bcbf7f-1.png"); }
+.card-4::before { background-image: url("bcbf7f-6.png"); }
+
+/* ===== CONTENU ===== */
+.card-content {
     background: var(--card-bg);
     border: 2px solid var(--neon-green);
     box-shadow: 0 0 20px var(--neon-green);
     padding: 30px;
     border-radius: 10px;
-    text-align: center;
     width: 650px;
     min-height: 380px;
+    text-align: center;
     backdrop-filter: blur(10px);
     color: white;
 }
@@ -99,28 +89,14 @@ h1, h2 {
     text-shadow: 0 0 15px var(--neon-green);
 }
 
-h1 {
-    font-size: 3.2rem;
-    margin-bottom: 15px;
-}
-
-h2 {
-    font-size: 2.1rem;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 1.05rem;
-    line-height: 1.5;
-}
-
-/* ================= LISTES ================= */
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.1rem; }
 
 ul {
     list-style: none;
     padding: 0;
-    margin-top: 15px;
     text-align: left;
+    margin-top: 15px;
 }
 
 li {
@@ -131,8 +107,6 @@ li i {
     color: var(--neon-green);
     margin-right: 10px;
 }
-
-/* ================= BOUTONS ================= */
 
 .btn {
     display: inline-block;
@@ -151,8 +125,7 @@ li i {
     transform: scale(1.05);
 }
 
-/* ================= NAVIGATION ================= */
-
+/* ===== NAV ===== */
 .skip-btn {
     position: fixed;
     bottom: 30px;
@@ -160,15 +133,14 @@ li i {
     color: var(--neon-green);
     font-family: 'Orbitron';
     cursor: pointer;
-    font-weight: bold;
-    animation: pulse 2s infinite;
     z-index: 100;
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% { opacity: 0.5; transform: translateX(0); }
+    0% { opacity: .5; transform: translateX(0); }
     50% { opacity: 1; transform: translateX(8px); }
-    100% { opacity: 0.5; transform: translateX(0); }
+    100% { opacity: .5; transform: translateX(0); }
 }
 
 .nav-dots {
@@ -184,7 +156,7 @@ li i {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,.3);
     margin: 0 6px;
     cursor: pointer;
 }
@@ -198,51 +170,46 @@ li i {
 
 <body>
 
-<!-- VIDEO FOND -->
+<!-- VIDEO EN FOND -->
 <video class="bg-video" autoplay muted loop playsinline>
-    <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
+    <source src="Screen_Recording_20260206_011212_YouTube.mp4" type="video/mp4">
 </video>
 
 <div class="card-container">
 
-    <!-- CARTE 1 -->
     <div class="card card-1">
         <div class="card-content">
             <h1>GROUPE 6</h1>
             <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
-            <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
+            <a href="https://discord.gg/XJtWUFuTtT" class="btn" target="_blank">Rejoindre le Discord</a>
         </div>
     </div>
 
-    <!-- CARTE 2 -->
     <div class="card card-2">
         <div class="card-content">
             <h2>Nos Missions</h2>
             <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
             <ul>
-                <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
-                <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
-                <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
+                <li><i class="fas fa-shield-alt"></i> Protection VIP</li>
+                <li><i class="fas fa-truck-moving"></i> Convois blindés</li>
+                <li><i class="fas fa-binoculars"></i> Surveillance</li>
             </ul>
         </div>
     </div>
 
-    <!-- CARTE 3 -->
     <div class="card card-3">
         <div class="card-content">
             <h2>Rejoignez l'Élite</h2>
-            <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
+            <p>Le Groupe 6 recrute des agents motivés et disciplinés.</p>
             <a href="#" class="btn">POSTULER</a>
-            <p style="font-size: 0.8rem; margin-top: 10px;">(Formulaire sur Discord)</p>
         </div>
     </div>
 
-    <!-- CARTE 4 -->
     <div class="card card-4">
         <div class="card-content">
             <h2>Los Santos</h2>
-            <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques.</p>
-            <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
+            <p>Le Groupe 6 s'installe sur ALYA RP.</p>
+            <a href="https://discord.gg/alyarp" class="btn" target="_blank">REJOINDRE ALYA RP</a>
         </div>
     </div>
 
@@ -265,26 +232,13 @@ let index = 0;
 
 function slideTo(i) {
     index = i % 4;
-    gsap.to(container, {
-        x: -index * window.innerWidth,
-        duration: 1,
-        ease: "power2.out"
-    });
-    dots.forEach((d, n) => d.classList.toggle('active', n === index));
+    gsap.to(container, { x: -index * innerWidth, duration: 1, ease: "power2.out" });
+    dots.forEach((d,n)=>d.classList.toggle("active", n===index));
 }
-
-function nextSlide() {
-    slideTo(index + 1);
-}
-
-dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => slideTo(i));
-});
-
-window.addEventListener('resize', () => {
-    gsap.set(container, { x: -index * window.innerWidth });
-});
+function nextSlide(){ slideTo(index+1); }
+dots.forEach((dot,i)=>dot.onclick=()=>slideTo(i));
 </script>
 
 </body>
 </html>
+
