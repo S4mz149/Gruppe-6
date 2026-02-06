@@ -50,293 +50,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-/* ================= IMAGES DES CARTES ================= */
-.card-1 { background-image: url("djb0b44-c4077bb5-d56f-4596-abcb-3ba7c2e1dc78.png"); }
-.card-2 { background-image: url("87d90-17510393768786-1920.jpg"); }
-.card-3 { background-image: url("bcbf7f-1.png"); }
-.card-4 { background-image: url("bcbf7f-6.png"); }
-
-/* ================= CONTENU ================= */
-.card-content {
     position: relative;
-    z-index: 2;
-    background: var(--card-bg);
-    border: 2px solid var(--neon-green);
-    box-shadow: 0 0 20px var(--neon-green);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    width: 650px;
-    min-height: 380px;
-    backdrop-filter: blur(10px);
-    color: white;
-}
-
-h1, h2 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--neon-green);
-    text-shadow: 0 0 15px var(--neon-green);
-}
-
-h1 { font-size: 3.2rem; margin-bottom: 15px; }
-h2 { font-size: 2.1rem; margin-bottom: 10px; }
-p { font-size: 1.05rem; line-height: 1.5; }
-
-/* ================= LISTES ================= */
-ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-    text-align: left;
-}
-
-li { margin: 10px 0; }
-li i { color: var(--neon-green); margin-right: 10px; }
-
-/* ================= BOUTONS ================= */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 26px;
-    background: var(--neon-green);
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-.btn:hover {
-    background: white;
-    transform: scale(1.05);
-}
-
-/* ================= NAVIGATION ================= */
-.skip-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    color: var(--neon-green);
-    font-family: 'Orbitron';
-    cursor: pointer;
-    font-weight: bold;
-    animation: pulse 2s infinite;
-    z-index: 100;
-}
-
-@keyframes pulse {
-    0% { opacity: 0.5; transform: translateX(0); }
-    50% { opacity: 1; transform: translateX(8px); }
-    100% { opacity: 0.5; transform: translateX(0); }
-}
-
-.nav-dots {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    z-index: 100;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    margin: 0 6px;
-    cursor: pointer;
-}
-
-.dot.active {
-    background: var(--neon-green);
-    box-shadow: 0 0 8px var(--neon-green);
-}
-</style>
-</head>
-
-<body>
-
-<!-- VIDEO EN FOND -->
-<video class="bg-video" autoplay muted loop playsinline>
-    <source src="Screen_Recording_20260206_011212_YouTube.mp4" type="video/mp4">
-</video>
-
-<div class="card-container">
-
-    <!-- CARTE 1 -->
-    <div class="card card-1">
-        <div class="card-content">
-            <h1>GROUPE 6</h1>
-            <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
-            <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
-        </div>
-    </div>
-
-    <!-- CARTE 2 -->
-    <div class="card card-2">
-        <div class="card-content">
-            <h2>Nos Missions</h2>
-            <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
-            <ul>
-                <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
-                <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
-                <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- CARTE 3 -->
-    <div class="card card-3">
-        <div class="card-content">
-            <h2>Rejoignez l'Élite</h2>
-            <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
-            <a href="#" class="btn">POSTULER</a>
-            <p style="font-size: 0.8rem; margin-top: 10px;">(Formulaire sur Discord)</p>
-        </div>
-    </div>
-
-    <!-- CARTE 4 -->
-    <div class="card card-4">
-        <div class="card-content">
-            <h2>Los Santos</h2>
-            <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques.</p>
-            <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
-        </div>
-    </div>
-
-</div>
-
-<!-- BOUTON SKIP -->
-<div class="skip-btn" onclick="nextSlide()">SKIP <i class="fas fa-chevron-right"></i></div>
-
-<!-- NAV DOTS -->
-<div class="nav-dots">
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-</div>
-
-<!-- JS SLIDER -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script>
-const container = document.querySelector('.card-container');
-const dots = document.querySelectorAll('.dot');
-let index = 0;
-
-function slideTo(i) {
-    index = i % 4;
-    gsap.to(container, {
-        x: -index * window.innerWidth,
-        duration: 1,
-        ease: "power2.out"
-    });
-    dots.forEach((d, n) => d.classList.toggle('active', n === index));
-}
-
-function nextSlide() { slideTo(index + 1); }
-
-dots.forEach((dot, i) => { dot.addEventListener('click', () => slideTo(i)); });
-
-window.addEventListener('resize', () => {
-    gsap.set(container, { x: -index * window.innerWidth });
-});
-</script>
-
-</body>
-</html>
-✅ Ce qui a été fait :
-
-La vidéo Screen_Recording_20260206_011212_YouTube.mp4 est en fond fixe.
-
-Chaque carte affiche son image centrée (djb0b44-...png, 87d90-...jpg, bcbf7f-1.png, bcbf7f-6.png).
-
-Le contenu reste lisible sur un fond semi-transparent.
-
-Bouton SKIP fonctionnel et dots interactives.
-
-Si tu veux, je peux aussi ajouter un léger effet de zoom sur les images quand elles apparaissent pour que ça fasse plus « dynamique et pro ».
-
-Veux‑tu que je fasse ça ?
-
-
-Vous avez dit :
-met les image dans les cartes et met la video en pleine ecran qui ne change pas
-
-ChatGPT a dit :
-Parfait ! On va mettre la vidéo en plein écran fixe en arrière-plan et placer les images directement à l’intérieur de chaque carte, centrées, plutôt que comme background CSS.
-
-Voici la version corrigée :
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GROUPE 6 | Sécurité d'Élite</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<style>
-:root {
-    --neon-green: #00ff66;
-    --card-bg: rgba(0,0,0,0.65);
-}
-
-/* ================= BASE ================= */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: 'Exo 2', sans-serif;
-    background: black;
-}
-
-/* ================= VIDEO FOND ================= */
-.bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -3;
-    filter: brightness(0.35);
-}
-
-/* ================= SLIDER ================= */
-.card-container {
-    display: flex;
-    width: 400vw; /* 4 cartes */
-    height: 100vh;
-}
-
-.card {
-    width: 100vw;
-    height: 100vh;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* ================= IMAGES DANS LES CARTES ================= */
-.card img {
-    max-width: 70%;
-    max-height: 50%;
-    object-fit: contain;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px var(--neon-green);
 }
 
 /* ================= CONTENU ================= */
@@ -448,7 +162,6 @@ li i { color: var(--neon-green); margin-right: 10px; }
 
     <!-- CARTE 1 -->
     <div class="card">
-        <img src="djb0b44-c4077bb5-d56f-4596-abcb-3ba7c2e1dc78.png" alt="Image Carte 1">
         <div class="card-content">
             <h1>GROUPE 6</h1>
             <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
@@ -458,7 +171,6 @@ li i { color: var(--neon-green); margin-right: 10px; }
 
     <!-- CARTE 2 -->
     <div class="card">
-        <img src="87d90-17510393768786-1920.jpg" alt="Image Carte 2">
         <div class="card-content">
             <h2>Nos Missions</h2>
             <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
@@ -472,7 +184,6 @@ li i { color: var(--neon-green); margin-right: 10px; }
 
     <!-- CARTE 3 -->
     <div class="card">
-        <img src="bcbf7f-1.png" alt="Image Carte 3">
         <div class="card-content">
             <h2>Rejoignez l'Élite</h2>
             <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
@@ -483,7 +194,6 @@ li i { color: var(--neon-green); margin-right: 10px; }
 
     <!-- CARTE 4 -->
     <div class="card">
-        <img src="bcbf7f-6.png" alt="Image Carte 4">
         <div class="card-content">
             <h2>Los Santos</h2>
             <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques.</p>
