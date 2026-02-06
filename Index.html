@@ -23,13 +23,15 @@
             font-family: 'Exo 2', sans-serif;
         }
 
-        /* VIDEO DE FOND */
+        /* VIDÉO DE FOND PLEIN ÉCRAN */
         #bg-video {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
+            z-index: 0; /* derrière tout le reste */
             filter: brightness(0.4);
         }
 
@@ -38,7 +40,7 @@
             width: 400vw;
             height: 100vh;
             position: relative;
-            z-index: 2;
+            z-index: 2; /* au-dessus de la vidéo */
             will-change: transform;
         }
 
@@ -138,7 +140,7 @@
 </head>
 <body>
 
-    <!-- VIDEO DE FOND LOCALE -->
+    <!-- VIDÉO DE FOND -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="Enregistrement_d'écran_20260206_011212_YouTube.mp4" type="video/mp4">
     </video>
