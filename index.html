@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GROUPE 6 | Sécurité d'Élite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- VIDEO DE FOND -->
+<video class="bg-video" autoplay muted loop playsinline>
+  <source src="video.mp4" type="video/mp4">
+  Votre navigateur ne supporte pas la vidéo HTML5.
+</video>
+
+<!-- SLIDER -->
+<div class="card-container">
+
+  <!-- CARTE 1 -->
+  <div class="card">
+    <div class="card-content">
+      <h1>GROUPE 6</h1>
+      <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
+      <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre le Discord</a>
+    </div>
+  </div>
+
+  <!-- CARTE 2 -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Nos Missions</h2>
+      <p>Notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
+      <ul>
+        <li><i class="fas fa-shield-alt"></i> Protection VIP & Personnalités</li>
+        <li><i class="fas fa-truck-moving"></i> Convois blindés & fonds</li>
+        <li><i class="fas fa-binoculars"></i> Surveillance & Renseignement</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CARTE 3 -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Rejoignez l'Élite</h2>
+      <p>Le Groupe 6 recrute des agents motivés et disciplinés pour relever les défis les plus ardus.</p>
+      <a href="#" class="btn">POSTULER</a>
+      <p style="font-size: 0.8rem; margin-top: 10px;">(Formulaire sur Discord)</p>
+    </div>
+  </div>
+
+  <!-- CARTE 4 -->
+  <div class="card">
+    <div class="card-content">
+      <h2>Los Santos</h2>
+      <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques.</p>
+      <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOUTON SKIP -->
+<div class="skip-btn" onclick="nextSlide()">SKIP <i class="fas fa-chevron-right"></i></div>
+
+<!-- NAV DOTS -->
+<div class="nav-dots">
+  <div class="dot active"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
