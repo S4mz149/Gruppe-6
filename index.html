@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROUPE 6 | Sécurité d'Élite</title>
+    <title>GROUPE 6 | Sécurité d'Élite FiveM RP</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
+            --bg-dark: #050505;
             --neon-green: #00ff66;
             --pure-white: #ffffff;
-            --card-bg: rgba(0, 0, 0, 0.8); /* Fond plus sombre pour contraster avec la vidéo */
-            --border-glow: 0 0 20px var(--neon-green);
+            --card-bg: rgba(10, 10, 10, 0.8);
+            --border-glow: 0 0 15px var(--neon-green), 0 0 5px var(--neon-green);
         }
 
         body, html {
             margin: 0; padding: 0;
             width: 100%; height: 100%;
             overflow: hidden;
-            background-color: black;
+            background-color: var(--bg-dark);
             font-family: 'Exo 2', sans-serif;
         }
 
@@ -28,7 +29,7 @@
             right: 0; bottom: 0;
             min-width: 100%; min-height: 100%;
             z-index: -1;
-            filter: brightness(0.4); /* Assombrit la vidéo pour lire le texte */
+            filter: brightness(0.4); 
             object-fit: cover;
         }
 
@@ -49,82 +50,92 @@
             justify-content: center;
         }
 
-        /* CARTES PLUS LONGUES ET UNIFORMES */
+        /* CARTES DE MÊME TAILLE (STYLE ORIGINAL) */
         .card-content {
             background-color: var(--card-bg);
             border: 2px solid var(--neon-green);
             box-shadow: var(--border-glow);
-            padding: 60px; /* Plus d'espace interne */
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 10px;
             text-align: center;
-            width: 850px; /* Longueur augmentée */
-            min-height: 450px; /* Taille uniforme */
+            width: 800px; /* Taille fixe pour l'uniformité */
+            min-height: 480px; /* Taille fixe pour l'uniformité */
             display: flex;
             flex-direction: column;
             justify-content: center;
-            backdrop-filter: blur(5px); /* Effet de flou sur la vidéo */
+            z-index: 2;
         }
 
         h1, h2 {
             font-family: 'Orbitron', sans-serif;
             color: var(--neon-green);
             text-shadow: var(--border-glow);
-            margin-bottom: 25px;
         }
 
-        h1 { font-size: 4rem; }
-        p { font-size: 1.3rem; color: white; line-height: 1.8; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 20px; }
+        h2 { font-size: clamp(1.8rem, 6vw, 3rem); margin-top: 0; }
+        p { font-size: clamp(0.9rem, 2vw, 1.2rem); line-height: 1.6; color: var(--pure-white); }
 
         .btn {
             display: inline-block;
             margin-top: 30px;
-            padding: 18px 40px;
+            padding: 15px 30px;
             background-color: var(--neon-green);
-            color: black;
+            color: var(--bg-dark);
             text-decoration: none;
-            font-weight: 900;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            transition: 0.3s;
         }
 
-        /* ANIMATION SKIP */
+        .btn:hover {
+            background-color: var(--pure-white);
+            box-shadow: var(--border-glow);
+            transform: translateY(-5px);
+        }
+
+        /* SKIP ANIMATION */
         .skip-btn {
             position: fixed;
-            bottom: 40px;
+            bottom: 30px;
             right: 40px;
             color: var(--neon-green);
             font-family: 'Orbitron';
             cursor: pointer;
-            z-index: 100;
+            z-index: 1000;
             display: flex;
             align-items: center;
             gap: 10px;
-            animation: pulse 2s infinite;
+            font-weight: bold;
+            animation: pulseSkip 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.7; }
+        @keyframes pulseSkip {
+            0% { opacity: 0.6; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(5px); }
+            100% { opacity: 0.6; transform: translateX(0); }
         }
 
         .nav-dots {
             position: fixed;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            z-index: 100;
+            z-index: 1000;
         }
         .dot {
-            width: 15px; height: 15px;
-            background: rgba(255,255,255,0.2);
-            margin: 0 10px;
+            width: 12px; height: 12px;
             border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 0 8px;
             cursor: pointer;
         }
-        .dot.active { background: var(--neon-green); box-shadow: var(--border-glow); }
+        .dot.active { background-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
 
+        ul { list-style: none; padding: 0; margin-top: 20px; }
+        li { margin: 10px 0; font-size: 1.1rem; color: white; }
     </style>
 </head>
 <body>
@@ -136,37 +147,44 @@
     <div class="card-container">
         <div class="card">
             <div class="card-content">
-                <h1>GROUPE 6</h1>
-                <p>L'excellence opérationnelle au service de votre sécurité. Nous ne laissons rien au hasard.</p>
-                <a href="#" class="btn">DISCORD</a>
+                <h1><span style="color:var(--pure-white);">GROUPE</span> 6</h1>
+                <p>Organisation de Sécurité d'Élite sur FiveM RP. Protection, Logistique et Interventions Spécialisées.</p>
+                <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre notre Discord</a>
             </div>
         </div>
 
         <div class="card">
             <div class="card-content">
-                <h2>NOS MISSIONS</h2>
-                <p>Protection VIP, Convois tactiques, et surveillance électronique de haute précision à travers San Andreas.</p>
+                <h2>Nos <span style="color:var(--pure-white);">Missions</span></h2>
+                <p>En tant que Groupe 6, notre expertise s'étend de la protection rapprochée aux convois blindés.</p>
+                <ul>
+                    <li><i class="fas fa-shield-alt" style="color:var(--neon-green);"></i> Protection VIP & Personnalités</li>
+                    <li><i class="fas fa-truck-moving" style="color:var(--neon-green);"></i> Convois blindés et transferts de fonds</li>
+                    <li><i class="fas fa-binoculars" style="color:var(--neon-green);"></i> Surveillance et Renseignement</li>
+                </ul>
             </div>
         </div>
 
         <div class="card">
             <div class="card-content">
-                <h2>RECRUTEMENT</h2>
-                <p>Nous recherchons des profils sérieux avec une expérience militaire ou policière. Rejoignez l'élite.</p>
-                <a href="#" class="btn">POSTULER</a>
+                <h2>Rejoignez <span style="color:var(--pure-white);">l'Élite</span></h2>
+                <p>Le Groupe 6 recrute des agents motivés, disciplinés et prêts à relever les défis les plus ardus.</p>
+                <a href="#" class="btn">POSTULER MAINTENANT</a>
+                <p style="font-size: 0.9rem; margin-top: 20px;">(Formulaire disponible sur notre Discord)</p>
             </div>
         </div>
 
         <div class="card">
             <div class="card-content">
-                <h2>PARTENAIRES</h2>
-                <p>En collaboration étroite avec les services de l'État et Alya RP pour une immersion totale.</p>
+                <h2>Connectez-vous à <span style="color:var(--pure-white);">Los Santos</span></h2>
+                <p>Le Groupe 6 est fier de collaborer avec ALYA RP, l'un des serveurs Roleplay les plus dynamiques.</p>
+                <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
             </div>
         </div>
     </div>
 
-    <div class="skip-btn" onclick="nextCard()">
-        SKIP <i class="fas fa-arrow-right"></i>
+    <div class="skip-btn" onclick="nextSlide()">
+        SKIP <i class="fas fa-chevron-right"></i>
     </div>
 
     <div class="nav-dots">
@@ -183,23 +201,26 @@
         let currentIndex = 0;
 
         function slideTo(index) {
-            if (index >= 4) index = 0; // Recommence au début si on skip à la fin
+            if (index >= 4) index = 0;
             currentIndex = index;
             gsap.to(container, {
                 x: -currentIndex * window.innerWidth,
                 duration: 1.2,
-                ease: "power4.out"
+                ease: "expo.out"
             });
-            
             dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
         }
 
-        function nextCard() {
+        function nextSlide() {
             slideTo(currentIndex + 1);
         }
 
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => slideTo(i));
+        });
+
+        window.addEventListener('resize', () => {
+            gsap.set(container, { x: -currentIndex * window.innerWidth });
         });
     </script>
 </body>
