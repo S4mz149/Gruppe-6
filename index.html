@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GROUPE 6 | Sécurité d'Élite FiveM RP</title>
+    <title>GROUPE 6 | Sécurité d'Élite</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -11,7 +11,7 @@
             --bg-dark: #050505;
             --neon-green: #00ff66;
             --pure-white: #ffffff;
-            --card-bg: rgba(10, 10, 10, 0.8);
+            --card-bg: rgba(10, 10, 10, 0.85);
             --border-glow: 0 0 15px var(--neon-green), 0 0 5px var(--neon-green);
         }
 
@@ -29,8 +29,9 @@
             right: 0; bottom: 0;
             min-width: 100%; min-height: 100%;
             z-index: -1;
-            filter: brightness(0.4); 
+            filter: brightness(0.35); 
             object-fit: cover;
+            background-color: black;
         }
 
         .card-container {
@@ -50,7 +51,6 @@
             justify-content: center;
         }
 
-        /* CARTES DE MÊME TAILLE (STYLE ORIGINAL) */
         .card-content {
             background-color: var(--card-bg);
             border: 2px solid var(--neon-green);
@@ -58,12 +58,13 @@
             padding: 40px;
             border-radius: 10px;
             text-align: center;
-            width: 800px; /* Taille fixe pour l'uniformité */
-            min-height: 480px; /* Taille fixe pour l'uniformité */
+            width: 800px; 
+            min-height: 480px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             z-index: 2;
+            backdrop-filter: blur(8px);
         }
 
         h1, h2 {
@@ -95,7 +96,6 @@
             transform: translateY(-5px);
         }
 
-        /* SKIP ANIMATION */
         .skip-btn {
             position: fixed;
             bottom: 30px;
@@ -140,15 +140,15 @@
 </head>
 <body>
 
-    <video autoplay muted loop id="bg-video">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-security-camera-in-a-dark-hallway-32693-large.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-technological-circuit-board-interface-4431-large.mp4" type="video/mp4">
     </video>
 
     <div class="card-container">
         <div class="card">
             <div class="card-content">
                 <h1><span style="color:var(--pure-white);">GROUPE</span> 6</h1>
-                <p>Organisation de Sécurité d'Élite sur FiveM RP. Protection, Logistique et Interventions Spécialisées.</p>
+                <p>Organisation de Sécurité d'Élite. Protection, Logistique et Interventions Spécialisées.</p>
                 <a href="https://discord.gg/XJtWUFuTtT" target="_blank" class="btn">Rejoindre notre Discord</a>
             </div>
         </div>
@@ -177,7 +177,7 @@
         <div class="card">
             <div class="card-content">
                 <h2>Connectez-vous à <span style="color:var(--pure-white);">Los Santos</span></h2>
-                <p>Le Groupe 6 est fier de collaborer avec ALYA RP, l'un des serveurs Roleplay les plus dynamiques.</p>
+                <p>Le Groupe 6 est fier de s'installer à ALYA RP, l'un des serveurs les plus dynamiques. Rejoignez l'action et vivez une expérience immersive !</p>
                 <a href="https://discord.gg/alyarp" target="_blank" class="btn">REJOINDRE ALYA RP</a>
             </div>
         </div>
